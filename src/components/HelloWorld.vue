@@ -41,13 +41,16 @@ export default defineComponent({
   props: {
     msg: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup: () => {
     const count = ref(0)
+    fetch('/api/products')
+      .then((res) => res.json())
+      .then((out) => console.log(out.message))
     return { count }
-  }
+  },
 })
 </script>
 
